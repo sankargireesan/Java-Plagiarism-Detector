@@ -19,5 +19,13 @@ public abstract class ASTSubTree {
 	* Returns unique mass threshold for each sub-tree.
 	*/
 	abstract public int getMassThreshold();
+	/**
+	* Sets mass for each sub-tree.
+	*/
+	abstract public void setMass();
+	/**
+	* Sets unique mass threshold for each sub-tree.
+	*/
+	abstract public void setMassThreshold();
 	
 }
