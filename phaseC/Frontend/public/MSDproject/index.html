@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="PDApp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/jquery-ui.css" rel="stylesheet"/>
+
+
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+
+    <!--Controllers-->
+
+    <script src="client/views/projecthome.controller.client.js"></script>
+    <script src="client/views/login.controller.client.js"></script>
+    <script src="client/views/register.controller.client.js"></script>
+    <script src="client/views/admin.controller.client.js"></script>
+    <script src="client/views/ownfavorites.controller.client.js"></script>
+
+    <!--services-->
+    <script src="client/services/user.service.client.js"></script>
+
+    <script src="client/services/favorite.service.client.js"></script>
+
+</head>
+<body>
+<H1>Detect Plagiarism in Java projects!</H1>
+<div ng-view>
+</div>
+</body>
+</html>

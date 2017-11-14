@@ -1,0 +1,70 @@
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header navbar-brand pull-left leftpadding-twentyfivepx">
+            <p class="white-color">
+                <b>Welcome to Java Plagiarism Detection Tool</b>
+            </p>
+        </div>
+
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <h1>Get Github Repositories</h1>
+    <div class="input-group">
+        <input ng-model="model.link1" type="text" class="form-control" placeholder="Enter source folder link for the project">
+        <span class="input-group-btn">
+                <button ng-click="model.fetchGithubProject(model.link1)" class="btn btn-default" type="button">Go!</button>
+            </span>
+
+
+    </div>
+    <br>
+    <br>
+    <div class="input-group"><p>Directory: <input type="file" webkitdirectory mozdirectory /></p></div>
+    <br>
+    <br>
+    <div class="input-group">
+        <input ng-model="model.link2" type="text" class="form-control" placeholder="Enter source folder link for the project">
+        <span class="input-group-btn">
+                <button ng-click="model.fetchGithubProject(model.link2)" class="btn btn-default" type="button">Go!</button>
+            </span>
+
+
+    </div>
+    <br>
+    <br>
+    <div class="input-group"><p>Directory: <input type="file" webkitdirectory mozdirectory /></p></div>
+    <br>
+    <br>
+    <button ng-click="model.performtest(model.link1, model.link2)" class="btn btn-primary" type="button">Perform Test!</button>
+    <br>
+    <br>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+
+        <div class="navbar-header pull-right">
+
+            <p class="navbar-text pull-right rightmargin-fifteenpx">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
+                    <!--<div class="nav navbar-nav navbar-right row navbar-text text-center">-->
+                    <span class="glyphicon glyphicon-user white-color">
+
+          </span>
+                    <!--</div>-->
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
