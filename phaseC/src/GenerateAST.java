@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -173,7 +172,7 @@ public class GenerateAST {
 	}
 }
 
-=======
+
 import java.io.*;
 import java.util.HashSet;
 import java.util.List;
@@ -273,4 +272,3 @@ public class GenerateAST {
 	}
 }
 
->>>>>>> 679ed590966ce1a61fd5de4b6d73053cf55d2140
