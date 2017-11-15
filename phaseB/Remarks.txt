@@ -1,7 +1,8 @@
 UML:
-UML diagram does not include complete details of the system design apart from the users; In particular, the diagram does not show any classes related to the core functionality of detecting plagiarism and checking for similarities. Also not shown are classes related to data structures such as Abstract Syntax Trees that are used by the plagiarism detector.
+Your UML Class Diagram shows several things at once. First, it shows major system components such as SubTreePlagiarism and ASTSubTreeGenerator. Second, it shows key classes such as Report and User. Third, it shows generic infrastructure such as Sets, Iterators, etc. It would have been useful to have a separate diagram only showing the major components and their relationships so that it is easy to quickly get an overview. It is also a bit surprising to see an ASTSubTreeGenerator but no AST-related classes, and it is unclear if/how the components work with files and projects for the code being analyzed.
 
 Interfaces:
-The interfaces match the limited functionality covered by the UML diagram, and don’t cover core functionality for detecting plagiarism. Methods in the interfaces are mostly getters and setters
- 
-Score: 83
+ Major data structures/objects wrt UML have not been provided.
+
+Score: 86
+
