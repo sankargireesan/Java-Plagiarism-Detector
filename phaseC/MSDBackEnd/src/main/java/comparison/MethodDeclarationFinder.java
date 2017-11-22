@@ -11,7 +11,6 @@ public class MethodDeclarationFinder extends ASTVisitor {
 	  private final List <MethodDeclaration> methods = new ArrayList <> ();
 
 	  public static List<MethodDeclaration> perform(ASTNode node) {
-		  System.out.println("Hello");
 	      MethodDeclarationFinder finder = new MethodDeclarationFinder();
 	      node.accept(finder);
 	      return finder.getMethods();

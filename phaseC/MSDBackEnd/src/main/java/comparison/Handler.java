@@ -4,7 +4,6 @@ package comparison;
  */
 public class Handler {
 	public static String astComparisonHandler(String path1, String path2) {
-		
 		GenerateAST.astGenerator(path1, path2);
 		Comparison.compareMethod(GenerateAST.getMethodList1(), GenerateAST.getMethodList2());
 		VariableRename.renameVar(GenerateAST.getVariableList1());
