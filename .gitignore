@@ -1,0 +1,7 @@
+*.class
+*.swo
+*.rtf
+.idea
+*.iml
+.classpath
+.project
