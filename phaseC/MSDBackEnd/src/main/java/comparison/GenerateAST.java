@@ -41,7 +41,7 @@ public class GenerateAST {
 	}
 	
 	/*
-	 * returns list of ast node of all files
+	 * returns list of AST node of all files
 	 */
 	private static List<ASTNode> getAllFiles(String dirPath) throws IOException {
 		    File directory = new File(dirPath);
@@ -121,6 +121,13 @@ public class GenerateAST {
 	
 	public static List<VariableDeclarationFragment> getVariableList2() {
 		return variableList2;
+	}
+	
+	public static void clearForTests(){
+		methodList1.clear();
+		methodList2.clear();	 
+		variableList1.clear();
+		variableList2.clear();
 	}
 }
 
