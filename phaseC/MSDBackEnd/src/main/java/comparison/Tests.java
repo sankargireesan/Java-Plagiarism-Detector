@@ -6,8 +6,8 @@ import org.junit.Test;
 public class Tests {
 
 	String curDir= System.getProperty("user.dir");
-	String path1 = curDir+"\\src\\main\\java\\";
-	String path2 = curDir+"\\src\\main\\java\\";
+	String path1 = curDir+"\\src\\main\\java\\testPackages\\";
+	String path2 = curDir+"\\src\\main\\java\\testPackages\\";
 	
 	@Test
 	public void exactFunction() {

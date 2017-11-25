@@ -1,4 +1,4 @@
-package testFiles4;
+package testPackages.testFiles6;
 
 public class SimilarMethod2 {
 

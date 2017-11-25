@@ -1,4 +1,4 @@
-package testFiles5;
+package testPackages.testFiles1;
 
 public class SimilarMethod1 {
 
@@ -13,7 +13,7 @@ public class SimilarMethod1 {
 
 	public <T extends Comparable<T>> void recursiveSort(T[] arr, int a, int b) {
 		if (a < b) {
-			int differentVariable = randomizedPartition(arr, a, b);
+			int part = randomizedPartition(arr, a, b);
 			recursiveSort(arr, a, part - 1);
 			recursiveSort(arr, part + 1, b);
 		}
