@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jdt.core.dom.*;
-public class Comparison {
+public class Comparison implements IComparison{
 	/*
-	 * compare method for comparison of asts
+	 * compare method for comparison of ASTs
 	 */
-	public static String compareMethod(List<MethodDeclaration> methodList1, List<MethodDeclaration> methodList2) {
+	public String compareMethod(List<MethodDeclaration> methodList1, List<MethodDeclaration> methodList2) {
 		
 		List<String> similarMethod = new ArrayList<String>();
 		

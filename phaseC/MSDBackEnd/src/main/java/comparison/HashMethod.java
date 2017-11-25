@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.eclipse.jdt.core.dom.*;
 
-public class HashMethod {
+public class HashMethod implements IHashMethod{
 	
 	private static List <Integer> hashvalueList1 = new ArrayList <> (); // list of hash values for each method : use hashmap instead of list
 	private static List <Integer> hashvalueList2 = new ArrayList <> (); // list of hash values for each method : use hashmap instead of list
@@ -90,7 +90,7 @@ public class HashMethod {
 		return hashvalue;
 	}
 	
-	public static void hashComparison(List<MethodDeclaration> methodList1, List<MethodDeclaration> methodList2) {
+	public void hashComparison(List<MethodDeclaration> methodList1, List<MethodDeclaration> methodList2) {
 		
 		/*
 		 * calculating hash value for first method list

@@ -1,19 +1,32 @@
 package comparison;
 /*
- * Main handler class to handle different ast comparison functions
+ * Main handler class to handle different AST comparison functions
  */
 public class Handler {
+	
 	public static String astComparisonHandler(String path1, String path2) {
-		GenerateAST.astGenerator(path1, path2);
-		Comparison.compareMethod(GenerateAST.getMethodList1(), GenerateAST.getMethodList2());
-		VariableRename.renameVar(GenerateAST.getVariableList1());
-		VariableRename.renameVar(GenerateAST.getVariableList2());
-		Comparison.compareMethod(GenerateAST.getMethodList1(), GenerateAST.getMethodList2());
-		HashMethod.hashComparison(GenerateAST.getMethodList1(), GenerateAST.getMethodList2());
-		HashMethod.getHashValueList1();
-		HashMethod.getHashValueList2();
 		
-		return Comparison.compareMethod(GenerateAST.getMethodList1(), GenerateAST.getMethodList2()).toString();
+		ASTFactory f = new ASTFactory();
 		
+		f.astGenerator(path1, path2);
+		f.compareMethod(f.getMethodList1(), f.getMethodList2());
+		f.renameVar(f.getVariableList1());
+		f.renameVar(f.getVariableList2());
+		f.compareMethod(f.getMethodList1(), f.getMethodList2());
+		f.hashComparison(f.getMethodList1(), f.getMethodList2());
+
+//		HashMethod.getHashValueList1();
+//		HashMethod.getHashValueList2();
+		
+		return f.compareMethod(f.getMethodList1(), f.getMethodList2());
+		
+	}
+	
+	public static void main(String[] args) {
+		String curDir= System.getProperty("user.dir");
+		String path1 = curDir+"\\src\\main\\java\\testPackages\\";
+		String path2 = curDir+"\\src\\main\\java\\testPackages\\";
+		
+		System.out.println(astComparisonHandler(path1+"testFiles3",path2+"testFiles4"));
 	}
 }
