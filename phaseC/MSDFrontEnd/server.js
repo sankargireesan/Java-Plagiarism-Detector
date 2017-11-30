@@ -8,6 +8,27 @@ var session      = require('express-session');
 
 var app = express();
 
+app.get('/dowork',function(req,res){
+
+    console.log(req.params.Pathone);
+    console.log(req.params.Pathtwo);
+    var childProcess = require('child_process'),
+        child;
+    child = childProcess.exec('java -jar C:\\Temp\\sample.jar',
+        function (error, stdout, stderr){
+            console.log('stdout: ' + stdout);
+            console.log('stderr: ' + stderr);
+            if(error !== null){
+                console.log('exec error: ' + error);
+                res.send("error");
+            }
+            else{
+                res.send(stdout);
+
+            }
+        });
+});
+
 var connectionString = 'mongodb://localhost/msdproject-fall-2017';
 //
 
@@ -32,6 +53,32 @@ var ipaddress = '127.0.0.1';
 var port      = 3000;
 
 app.listen(port);
+
+
+app.post('/dowork',function(req,res){
+
+    console.log(req.body);
+    var p1 = req.body.Pathone.toString();
+    var p2 = req.body.Pathtwo.toString();
+    //var constring = 'java -jar C:\\Temp\\pd.jar '+p1+" "+p2;
+    var constring = 'java -jar .\\MSDproject\\pd.jar '+p1+" "+p2;
+
+    var childProcess = require('child_process'),
+        child;
+    child = childProcess.exec(constring,
+        function (error, stdout, stderr){
+            console.log('stdout: ' + stdout);
+            console.log('stderr: ' + stderr);
+            if(error !== null){
+                console.log('exec error: ' + error);
+                res.send("error");
+            }
+            else{
+                res.send(stdout);
+
+            }
+        });
+});
 //var assignment=require("./assignment/app.js");
 //assignment(app);
 //app.listen(3000);

@@ -13,6 +13,7 @@
     </div>
 </nav>
 
+<!--
 <div class="container-fluid">
     <h1>The Plagiarism Report is as follows:</h1>
     <br>
@@ -33,6 +34,50 @@
     <button ng-click="model.exportreport()" class="btn btn-primary" type="button">Download Report</button>
     <button ng-click="model.savereport()" class="btn btn-primary" type="button">Save Report</button>
 </div>
+-->
+
+<div class="container-fluid">
+    <h1>The Plagiarism Report is as follows:</h1>
+    <div id="exportthis">
+
+        <table class = "table">
+            <tr>
+                <th><b>Student name:</b></th>
+                <th><b>Student name:</b></th>
+            </tr>
+            <tr>
+                <td><p>{{model.studentonename}}</p></td>
+                <td><p>{{model.studenttwoname}}</p></td>
+            </tr>
+            <tr>
+                <th><b>Methods:</b></th>
+                <th><b>Methods:</b></th>
+            </tr>
+            <tr>
+                <td>
+                    <table>
+                        <tr ng-repeat="methodnam in model.studentone track by $index"><td>{{methodnam}}</td></tr>
+                    </table>
+
+                </td>
+                 <td>
+                     <table>
+
+                         <tr ng-repeat="methodname in model.studenttwo track by $index"><td>{{methodname}}</td></tr>
+                     </table>
+
+                 </td>
+
+            </tr>
+
+
+        </table>
+
+    </div>
+    <button ng-click="model.exportreport()" class="btn btn-primary" type="button">Download Report</button>
+    <button ng-click="model.savereport()" class="btn btn-primary" type="button">Save Report</button>
+</div>
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

@@ -16,7 +16,7 @@
         init();
 
 
-        function performtest(link1 , link2) {
+        /*function performtest(link1 , link2) {
             $rootScope.first = vm.firststudent;
             $rootScope.second = vm.secondstudent;
 
@@ -33,10 +33,29 @@
 
                 $rootScope.plagiarismdata = response.data;
                 $location.url("/report/"+vm.userId)
-//                window.alert("Functions with plagiarism are:"+response.data);
             })
-        }
+        }*/
 
+        function performtest(link1 , link2) {
+            $rootScope.first = vm.firststudent;
+            $rootScope.second = vm.secondstudent;
+
+            var str = {
+                Pathone : link1,
+                Pathtwo : link2
+            }
+
+            $http.post('http://localhost:3000/dowork',str,{headers: { 'Accept': 'text/plain, text/html' }, transformResponse: [function (data) { return data.toString(); }]}).then(function(response){
+
+
+                $rootScope.plagiarismdata = response.data;
+                $location.url("/report/"+vm.userId)
+            });
+
+
+
+
+        }
 
     }
     })();
