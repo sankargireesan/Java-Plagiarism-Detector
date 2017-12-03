@@ -1,7 +1,18 @@
 package comparison;
 
-public class AbstractFactory {
-
+public class Factory {
+	
+	private static Factory _factory = null;
+	
+	private Factory() {}
+	
+	public static Factory instance() {
+		if(_factory==null) {
+			_factory= new Factory();
+		}
+		return _factory;
+	}
+	
     public IGenerateAST getGenAST() {
         return new GenerateAST();
     }
