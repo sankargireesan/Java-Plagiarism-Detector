@@ -1,6 +1,5 @@
 package comparison;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.jdt.core.dom.ASTMatcher;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
@@ -16,17 +15,16 @@ public class Comparison implements IComparison{
 	 */
 	public String compareMethod(List<MethodDeclaration> methodList1, List<MethodDeclaration> methodList2) {
 		
-		// List to store the similar methods
-		List<String> similarMethod = new ArrayList<String>();
-		
+		// StringBuilder to store the similar methods
+		StringBuilder sb = new StringBuilder();
 		for(MethodDeclaration n1: methodList1){
 			for(MethodDeclaration n2: methodList2){
 				if (n1.subtreeMatch(new ASTMatcher(), n2)) {
-					similarMethod.add(n1.getName().toString()); //adding similar method name of first repository
-					similarMethod.add(n2.getName().toString()); //adding similar method name of second repository
+					sb.append(n1.getName().toString()+" ");//adding similar method name of first repository
+					sb.append(n2.getName().toString()+" ");//adding similar method name of second repository
 				}
 			}
 		}				
-		return similarMethod.toString();
+		return sb.toString();
 	}
 }
