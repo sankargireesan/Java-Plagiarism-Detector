@@ -32,11 +32,11 @@ public class Handler {
 		System.out.println(astComparisonHandler(path1,path2));
 	}*/
 	
-//	public static void main(String[] args) {
-//		String curDir= System.getProperty("user.dir");
-//		String path1 = curDir+"\\src\\Tests\\testPackages\\";
-//		String path2 = curDir+"\\src\\Tests\\testPackages\\";
-//		
-//		System.out.println(astComparisonHandler(path1+"testFiles3",path2+"testFiles4"));
-//	}
+	public static void main(String[] args) {
+		String curDir= System.getProperty("user.dir");
+		String path1 = curDir+"\\src\\Tests\\testPackages\\";
+		String path2 = curDir+"\\src\\Tests\\testPackages\\";
+		
+		System.out.println(astComparisonHandler(path1+"testFiles3",path2+"testFiles4"));
+	}
 }

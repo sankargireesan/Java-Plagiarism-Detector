@@ -1,20 +1,21 @@
 package comparison;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.jdt.core.dom.*;
 
 public class HashMethod implements IHashMethod{
 	
-	private static List <Integer> hashvalueList1 = new ArrayList <> (); // list of hash values for each method : use hashmap instead of list
-	private static List <Integer> hashvalueList2 = new ArrayList <> (); // list of hash values for each method : use hashmap instead of list
+	private static HashMap <String, Integer> hashvalueList1 = new HashMap<> (); // list of hash values for each method : use hashmap instead of list
+	private static HashMap <String, Integer> hashvalueList2 = new HashMap<> (); // list of hash values for each method : use hashmap instead of list
 	
 	
 	/*
 	 * Hash Function
 	 */
-	private static int CalHashValue(String x) {
+	private int CalHashValue(String x) {
 		int hashVal = x.hashCode( );
         hashVal %= 10;
         if (hashVal < 0)
@@ -25,9 +26,9 @@ public class HashMethod implements IHashMethod{
 	/*
 	 *  Function to get prime number less than table size for CalHashValue function 
 	 */
-    private static int getPrime()
+    private int getPrime()
     {
-        for (int i = 10000 - 1; i >= 1; i--)
+        for (int i = 1000 - 1; i >= 1; i--)
         {
             int fact = 0;
             for (int j = 2; j <= (int) Math.sqrt(i); j++)
@@ -40,12 +41,12 @@ public class HashMethod implements IHashMethod{
         return 3;
     }
     
-    private static int primeSize = getPrime();
+    private int primeSize = getPrime();
 	
     /*
 	 * Helper function to get operators for given method
 	 */
-	private static int infixHelper( List <InfixExpression> infixList1 ) {
+	private int infixHelper( List <InfixExpression> infixList1 ) {
 		List <String> operatorList1 = new ArrayList <> ();
 		int i =0;
 		int hashvalue = 0;
@@ -61,7 +62,7 @@ public class HashMethod implements IHashMethod{
 	/*
 	 * Helper function to get prefix operators for given method
 	 */
-	private static int prefixHelper( List <PrefixExpression> prefixList1 ) {
+	private int prefixHelper( List <PrefixExpression> prefixList1 ) {
 		List <String> operatorList1 = new ArrayList <> ();
 		int i =0;
 		int hashvalue = 0;
@@ -77,7 +78,7 @@ public class HashMethod implements IHashMethod{
 	/*
 	 * Helper function to get prefix operators for given method
 	 */
-	private static int postfixHelper( List <PostfixExpression> postfixList1 ) {
+	private int postfixHelper( List <PostfixExpression> postfixList1 ) {
 		List <String> operatorList1 = new ArrayList <> ();
 		int i =0;
 		int hashvalue = 0;
@@ -90,44 +91,76 @@ public class HashMethod implements IHashMethod{
 		return hashvalue;
 	}
 	
+	private int expressionHash(MethodDeclaration method) {
+		List <InfixExpression> infixList = new ArrayList <> ();
+		List <PrefixExpression> prefixList = new ArrayList <> ();
+		List <PostfixExpression> postfixList = new ArrayList <> ();
+		infixList.addAll(InfixExpressionFinder.perform(method));
+		int temp = infixHelper(infixList);
+		postfixList.addAll(PostfixExpressionFinder.perform(method));
+		temp += prefixHelper(prefixList);
+		prefixList.addAll(PrefixExpressionFinder.perform(method));
+		temp += postfixHelper(postfixList);
+		return temp;
+	}
+	
+	
+	private List<String> getParameters (MethodDeclaration m) {
+		List<String> sb = new ArrayList<String>();
+		String s;
+		List<?> l = m.parameters();
+		for(int i =0; i< l.size();i++) {
+			s = m.parameters().get(i).toString();
+			sb.add(m.parameters().get(i).toString().substring(0,s.indexOf(" ")));
+		}
+		
+		return sb;
+	}
+	
+	private int parameterHash (MethodDeclaration m) {
+		List<String> para = getParameters(m);
+		int p = 0;
+		for (String string : para) {
+			p += CalHashValue(string);
+		}
+		return p;
+	}
+	
 	public void hashComparison(List<MethodDeclaration> methodList1, List<MethodDeclaration> methodList2) {
 		
 		/*
 		 * calculating hash value for first method list
 		 */
 		for (MethodDeclaration n1: methodList1) {
-			List <InfixExpression> infixList1 = new ArrayList <> ();
-			List <PrefixExpression> prefixList1 = new ArrayList <> ();
-			List <PostfixExpression> postfixList1 = new ArrayList <> ();
-			infixList1.addAll(InfixExpressionFinder.perform(n1));
-			hashvalueList1.add(infixHelper(infixList1));
-			postfixList1.addAll(PostfixExpressionFinder.perform(n1));
-			hashvalueList1.add(prefixHelper(prefixList1));
-			prefixList1.addAll(PrefixExpressionFinder.perform(n1));
-			hashvalueList1.add(postfixHelper(postfixList1));
+			
+			int rT = CalHashValue(n1.getReturnType2().toString());
+			int eH = expressionHash(n1);
+			int pH = parameterHash(n1);
+			hashvalueList1.put(n1.getName().toString(),(rT + eH + pH ));
 		}
-		
+//		System.out.println(methodList1.size());
+//		for (Integer m : hashvalueList1.values()) {
+//			System.out.println(m);
+//		}
 		/*
 		 * calculating HashValue for second method list
 		 */
 		for (MethodDeclaration n2: methodList2) {
-			List <InfixExpression> infixList2 = new ArrayList <> ();
-			List <PrefixExpression> prefixList2 = new ArrayList <> ();
-			List <PostfixExpression> postfixList2 = new ArrayList <> ();
-			infixList2.addAll(InfixExpressionFinder.perform(n2));
-			hashvalueList2.add(infixHelper(infixList2));
-			postfixList2.addAll(PostfixExpressionFinder.perform(n2));
-			hashvalueList2.add(prefixHelper(prefixList2));
-			prefixList2.addAll(PrefixExpressionFinder.perform(n2));
-			hashvalueList2.add(postfixHelper(postfixList2));
+			int rT = CalHashValue(n2.getReturnType2().toString());
+			int eH = expressionHash(n2);
+			int pH = parameterHash(n2);
+			hashvalueList2.put(n2.getName().toString(), rT + eH + pH );
 		}
+//		for (Integer m : hashvalueList2.values()) {
+//			System.out.println(m);
+//		}
 	}
 	
-	public static List <Integer> getHashValueList1() {
+	public static HashMap <String,Integer> getHashValueList1() {
 		return hashvalueList1;
 	}
 	
-	public static List <Integer> getHashValueList2() {
+	public static HashMap <String,Integer> getHashValueList2() {
 		return hashvalueList2;
 	}
 }
