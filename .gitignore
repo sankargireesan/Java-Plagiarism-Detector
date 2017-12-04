@@ -5,5 +5,5 @@
 *.iml
 .classpath
 .project
-/bin/
+bin/
 .settings

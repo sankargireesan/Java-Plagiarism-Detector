@@ -175,7 +175,7 @@ public class HashMethod implements IHashMethod{
 					list.add(percent);
 					list.add((float)hashvalueList1.get(str1).get(1));
 					list.add((float)hashvalueList2.get(str2).get(1));
-					comparisonList.put(str1+" : "+str2, list);
+					comparisonList.put(str1+"~HMS~"+str2, list);
 				}
 			}
 		}
@@ -196,7 +196,7 @@ public class HashMethod implements IHashMethod{
 			int pH = parameterHash(n1);
 			list.add(rT+eH+pH);
 			list.add(n);
-			hashvalueList1.put( n1.getName().toString(),list);
+			hashvalueList1.put( n1.getName().toString()+"\n\n"+ n1.toString(),list);
 		}
 		
 		
@@ -209,7 +209,7 @@ public class HashMethod implements IHashMethod{
 			int pH = parameterHash(n2);
 			list2.add(rT+eH+pH);
 			list2.add(n);
-			hashvalueList2.put( n2.getName().toString(), list2 );
+			hashvalueList2.put( n2.getName().toString() +"\n\n"+ n2.toString(), list2 );
 		}
 		// calculating the percentage
 		percentageComparison(hashvalueList1,hashvalueList2);
