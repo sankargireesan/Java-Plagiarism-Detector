@@ -10,7 +10,7 @@ import org.eclipse.jdt.core.dom.*;
 public class VariableVisitor extends ASTVisitor {
 	private final List <VariableDeclarationFragment> variables = new ArrayList <> ();
 	
-	public static List<VariableDeclarationFragment> perform(ASTNode node) {
+	public List<VariableDeclarationFragment> perform(ASTNode node) {
 		VariableVisitor finder = new VariableVisitor();
 	    node.accept(finder);
 	    return finder.getVariables();
