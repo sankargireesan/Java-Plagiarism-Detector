@@ -1,11 +1,17 @@
 package comparison;
+
+import java.util.HashMap;
+import java.util.List;
+
 /*
  * Main handler class to handle different AST comparison functions
  */
 public class Handler {
-	
+	/*
+	 * Returns string of similar methods
+	 */
 	public static String astComparisonHandler(String path1, String path2) {
-		
+		StringBuilder sb = new StringBuilder();
 		Factory f = Factory.instance();
 		IGenerateAST genAST = f.getGenAST();
 		IComparison compAST=f.getCompAST();
@@ -13,17 +19,17 @@ public class Handler {
 		IHashMethod hashMethod=f.getHashMethod();
 		
 		genAST.astGenerator(path1, path2);
-		compAST.compareMethod(genAST.getMethodList1(), genAST.getMethodList2());
+		sb.append(compAST.compareMethod(genAST.getMethodList1(), genAST.getMethodList2())+" ");
 		varRename.renameVar(genAST.getVariableList1());
 		varRename.renameVar(genAST.getVariableList2());
-		compAST.compareMethod(genAST.getMethodList1(), genAST.getMethodList2());
+		sb.append(compAST.compareMethod(genAST.getMethodList1(), genAST.getMethodList2()));
 		hashMethod.hashComparison(genAST.getMethodList1(), genAST.getMethodList2());
-
-//		HashMethod.getHashValueList1();
-//		HashMethod.getHashValueList2();
+		HashMap <String, List<Float>> hM = hashMethod.getComparisonList();
 		
-		return compAST.compareMethod(genAST.getMethodList1(), genAST.getMethodList2());
-		
+		for (String str : hM.keySet()) {
+			sb.append(" "+str);
+		}
+		return sb.toString();
 	}
 
 	/*public static void main(String[] args) {
