@@ -1,0 +1,47 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header navbar-brand pull-left leftpadding-twentyfivepx">
+            <p class="white-color">
+                <b>Welcome to Java Plagiarism Detection Tool</b>
+            </p>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="container">
+            <div ng-show="model.error" class="alert alert-danger" role="alert">
+                    {{model.error}}
+            </div>
+
+            <h1>Register</h1>
+        <input type="text"
+               ng-model="email"
+               class="form-control"
+               placeholder="Email-id"/>
+        <input type="password"
+               ng-model="password"
+               class="form-control"
+               placeholder="Password"/>
+        <input type="password"
+               ng-model="vpassword"
+               class="form-control"
+               placeholder="Verify password"/>
+        <a ng-click="model.createUser(email,password,vpassword)" class="btn btn-primary btn-block">Register</a>
+    <a class="btn btn-danger btn-block"
+           href="#/login">Cancel</a>
+    </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+
+        <div class="navbar-header pull-right">
+
+            <p class="navbar-text pull-right rightmargin-fifteenpx">
+
+            </p>
+        </div>
+    </div>
+</nav>

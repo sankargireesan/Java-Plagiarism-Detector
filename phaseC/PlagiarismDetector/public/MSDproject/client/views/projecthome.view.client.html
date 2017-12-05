@@ -1,0 +1,89 @@
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header navbar-brand pull-left leftpadding-twentyfivepx">
+            <p class="white-color">
+                <b>Welcome to Java Plagiarism Detection Tool</b>
+
+            </p>
+
+        </div>
+        <a href="#/user/{{model.userId}}/reports"><p class="white-color pull-right rightmargin-fifteenpx topmargin-tenpx">View Your saved reports</p></a>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <h1>Enter Links to Projects</h1>
+    <!--<div class="input-group">-->
+    <input ng-model="model.firststudent" type="text" class="form-control" placeholder="Enter name of Student">
+    <br>
+        <input ng-model="model.link1" type="text" class="form-control" placeholder="Enter source folder link for the project">
+        <!--<span class="input-group-btn">
+                <button ng-click="model.fetchGithubProject(model.link1)" class="btn btn-default" type="button">Go!</button>
+            </span>
+-->
+
+    <!--</div>-->
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <input ng-model="model.secondstudent" type="text" class="form-control" placeholder="Enter name of Student">
+    <br>
+        <input ng-model="model.link2" type="text" class="form-control" placeholder="Enter source folder link for the project">
+        <!--<span class="input-group-btn">
+                <button ng-click="model.fetchGithubProject(model.link2)" class="btn btn-default" type="button">Go!</button>
+            </span>
+-->
+
+
+    <br>
+    <br>
+    <!--<div class="input-group"><p>Directory: <input type="file" webkitdirectory mozdirectory /></p></div>-->
+    <br>
+    <br>
+    <button ng-click="model.performtest(model.link1, model.link2)" class="btn btn-primary" type="button">Perform Test!</button>
+    <br>
+    <br>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+
+        <div class="navbar-header pull-right">
+
+            <p class="navbar-text pull-right rightmargin-fifteenpx">
+
+                <a href="#/user/{{model.userId}}" class="navbar-link">
+                    <!--<div class="nav navbar-nav navbar-right row navbar-text text-center">-->
+                    <span class="glyphicon glyphicon-user white-color">
+
+          </span>
+                    <!--</div>-->
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="#/login" class="navbar-link">
+                    <!--<div class="nav navbar-nav navbar-right row navbar-text text-center">-->
+                    <span class="glyphicon glyphicon-off white-color">
+
+          </span>
+                    <!--</div>-->
+                </a>
+                <a href="help.pdf" class="navbar-link" style="color: white">
+                <span class="white-color">
+                <p class="white-color pull-right topmargin-tenpx rightmargin-fifteenpx" style="color:ghostwhite !important;background-color: steelblue;">Help</p>
+                 </span>
+            </a>
+            </p>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,153 @@
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header navbar-brand pull-left leftpadding-twentyfivepx">
+            <p class="white-color">
+                <b>Test Report</b>
+            </p>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <h1>The Plagiarism Report is as follows:</h1>
+    <div id="exportthis">
+
+        <table class = "table">
+            <tr>
+                <th><b>Student name:</b></th>
+                <th><b>Student name:</b></th>
+            </tr>
+            <tr>
+                <td><p>{{model.studentonename}}</p></td>
+                <td><p>{{model.studenttwoname}}</p></td>
+            </tr>
+            <tr>
+                <th><b>Copy-paste Methods:</b></th>
+                <th><b>Copy-paste Methods:</b></th>
+            </tr>
+            <tr>
+                <td>
+                    <!--<table>
+                        <tr ng-repeat="methodnam in model.studentonecp track by $index"><td>{{methodnam}}</td></tr>
+                    </table>-->
+                    <pre>
+                            <code class="java" ng-repeat="methodnam in model.studentonecp track by $index">{{methodnam}}
+                                <!--<tr ng-repeat="methodnam in model.studentonevc track by $index"><td>{{methodnam}}</td></tr>-->
+                            </code>
+                        </pre>
+                </td>
+                <td>
+                    <!--<table>
+
+                        <tr ng-repeat="methodname in model.studenttwocp track by $index"><td>{{methodname}}</td></tr>
+                    </table>-->
+                    <pre>
+                            <code class="java" ng-repeat="methodname in model.studenttwocp track by $index">{{methodname}}
+                                <!--<tr ng-repeat="methodnam in model.studentonevc track by $index"><td>{{methodnam}}</td></tr>-->
+                            </code>
+                        </pre>
+
+                </td>
+
+            </tr>
+            <tr>
+                <th><b>Variable-change Methods:</b></th>
+                <th><b>Variable-change Methods:</b></th>
+            </tr>
+            <tr>
+                <td>
+                    <!--<table>-->
+                        <pre>
+                            <code class="java" ng-repeat="methodnam in model.studentonevc track by $index">{{methodnam}}
+                                <!--<tr ng-repeat="methodnam in model.studentonevc track by $index"><td>{{methodnam}}</td></tr>-->
+                            </code>
+                        </pre>
+                    <!--</table>-->
+
+                </td>
+                <td>
+                    <!--<table>
+
+                        <tr ng-repeat="methodname in model.studenttwovc track by $index"><td>{{methodname}}</td></tr>
+                    </table>-->
+                    <pre>
+                            <code class="java" ng-repeat="methodname in model.studenttwovc track by $index">{{methodname}}
+                                <!--<tr ng-repeat="methodname in model.studenttwovc track by $index"><td>{{methodname}}</td></tr>-->
+                            </code>
+                        </pre>
+
+                </td>
+
+
+            </tr>
+            <tr>
+                <th><b>Hash-compare Methods:</b></th>
+                <th><b>Hash-compare Methods:</b></th>
+            </tr>
+            <tr>
+                <td>
+                    <!--<table>
+                        <tr ng-repeat="methodnam in model.studentonehc track by $index"><td>{{methodnam}}</td></tr>
+                    </table>-->
+
+                    <pre>
+                            <code class="java" ng-repeat="methodnam in model.studentonehc track by $index">{{methodnam}}
+                                <!--<tr ng-repeat="methodname in model.studenttwovc track by $index"><td>{{methodname}}</td></tr>-->
+                            </code>
+                        </pre>
+
+                </td>
+                <td>
+                    <!--<table>
+
+                        <tr ng-repeat="methodname in model.studenttwohc track by $index"><td>{{methodname}}</td></tr>
+                    </table>-->
+                    <pre>
+                            <code class="java" ng-repeat="methodname in model.studenttwohc track by $index">{{methodname}}
+                                <!--<tr ng-repeat="methodname in model.studenttwovc track by $index"><td>{{methodname}}</td></tr>-->
+                            </code>
+                        </pre>
+
+
+                </td>
+
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <button ng-click="model.exportreport()" class="btn btn-primary" type="button">Download Report</button>
+        <button ng-click="model.savereport()" class="btn btn-primary" type="button">Save Report</button>
+        <div class="navbar-header pull-right">
+
+            <p class="navbar-text pull-right rightmargin-fifteenpx">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
+                    <!--<div class="nav navbar-nav navbar-right row navbar-text text-center">-->
+                    <span class="glyphicon glyphicon-user white-color">
+
+          </span>
+                    <!--</div>-->
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="#/login" class="navbar-link">
+                    <!--<div class="nav navbar-nav navbar-right row navbar-text text-center">-->
+                    <span class="glyphicon glyphicon-off white-color">
+
+          </span>
+                    <!--</div>-->
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
