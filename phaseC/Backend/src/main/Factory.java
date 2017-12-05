@@ -1,4 +1,13 @@
-package comparison;
+package main;
+
+import astGenerator.GenerateAST;
+import astGenerator.IGenerateAST;
+import comparison.Comparison;
+import comparison.IComparison;
+import hashing.HashMethod;
+import hashing.IHashMethod;
+import renaming.IVariableRename;
+import renaming.VariableRename;
 
 /**
  * Factory is a Singleton class

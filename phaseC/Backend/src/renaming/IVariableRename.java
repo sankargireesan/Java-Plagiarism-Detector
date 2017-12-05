@@ -1,4 +1,4 @@
-package comparison;
+package renaming;
 
 import java.util.List;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
