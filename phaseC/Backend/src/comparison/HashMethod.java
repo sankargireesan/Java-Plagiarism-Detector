@@ -155,7 +155,7 @@ public class HashMethod implements IHashMethod{
 					list.add(percent);
 					list.add((float)hashvalueList1.get(str1).get(1));
 					list.add((float)hashvalueList2.get(str2).get(1));
-					comparisonList.put(str1+"~HMS~"+str2, list);
+					comparisonList.put(str1+"~NM~"+str2, list);
 				}
 			}
 		}
@@ -169,10 +169,16 @@ public class HashMethod implements IHashMethod{
 		for (MethodDeclaration m: methodList1) {
 			List<Integer> list = new ArrayList<Integer>();
 			int n = numberOfExpressions(m);
-			int rT = CalHashValue(m.getReturnType2().toString());
+			int rT =0;
+			try {
+				// return type handled 
+				rT = CalHashValue(m.getReturnType2().toString());	
+			}catch (NullPointerException e) {
+				rT =0;
+			}
 			int eH = expressionHash(m);
 			int pH = parameterHash(m);
-			list.add(rT+eH+pH);
+			list.add(31*rT+17*eH+29*pH);
 			list.add(n);
 			hashvalueList.put( m.getName().toString()+"\n\n"+ m.toString(), list );
 		}

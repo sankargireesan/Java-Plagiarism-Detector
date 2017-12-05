@@ -1,7 +1,6 @@
 package comparison;
 
 import java.util.List;
-
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 
 public interface IVariableRename {
