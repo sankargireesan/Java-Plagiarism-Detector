@@ -162,5 +162,6 @@ public class GenerateAST implements IGenerateAST {
 		methodList2.clear();
 		variableList1.clear();
 		variableList2.clear();
+		HashMethod.clearComparisonList();
 	}
 }

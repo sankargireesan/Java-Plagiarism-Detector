@@ -206,4 +206,12 @@ public class HashMethod implements IHashMethod{
 	public HashMap <String, List<Float>> getComparisonList() {
 		return comparisonList;
 	}
+	
+	/**
+	 * testing: clear comparison list
+	 */
+	public static void clearComparisonList() {
+		comparisonList.clear();;
+	}
+	
 }

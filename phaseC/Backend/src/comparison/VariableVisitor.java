@@ -11,12 +11,20 @@ import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 public class VariableVisitor extends ASTVisitor {
 	private final List <VariableDeclarationFragment> variables = new ArrayList <> ();
 	
+	/**
+	 * @param AST node
+	 * @return variable declaration fragment for the given AST Node
+	 */
 	public List<VariableDeclarationFragment> perform(ASTNode node) {
 		VariableVisitor finder = new VariableVisitor();
 	    node.accept(finder);
 	    return finder.getVariables();
 	}
 	
+	/**
+	 * (non-Javadoc)
+	 * @see org.eclipse.jdt.core.dom.ASTVisitor#visit(org.eclipse.jdt.core.dom.VariableDeclarationFragment)
+	 */
 	@Override
 	public boolean visit (final VariableDeclarationFragment var) {
 	    variables.add (var);
