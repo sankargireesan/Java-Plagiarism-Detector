@@ -101,13 +101,13 @@ public class GenerateAST implements IGenerateAST {
 		try {
 			nodeList1 = ParseFilesInDir(path1);
 		} catch (IOException e) {
-			e.printStackTrace();
+			return;
 		}
 		
 		try {
 			nodeList2 = ParseFilesInDir(path2);
 		} catch (IOException e) {
-			e.printStackTrace();
+			return;
 		}
 
 		for (ASTNode n : nodeList1) {

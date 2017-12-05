@@ -33,20 +33,20 @@ public class Handler {
 		return sb.toString();
 	}
 
-	public static void main(String[] args) {
-		String path1 = args[0];
-		String path2 = args[1];
-		System.out.println(astComparisonHandler(path1,path2));
-	}
-	
 //	public static void main(String[] args) {
-//		String curDir= System.getProperty("user.dir");
-////		String path1 = curDir+"\\src\\Tests\\testPackages\\";
-////		String path2 = curDir+"\\src\\Tests\\testPackages\\";
-////		
-//		String path1 = "E:\\Sankar\\resources\\PlagiarismChecker-Data\\set01\\Sample1";
-//		String path2 = "E:\\Sankar\\resources\\PlagiarismChecker-Data\\set01\\Sample2";
-//		
+//		String path1 = args[0];
+//		String path2 = args[1];
 //		System.out.println(astComparisonHandler(path1,path2));
 //	}
+	
+	public static void main(String[] args) {
+		String curDir= System.getProperty("user.dir");
+//		String path1 = curDir+"\\src\\Tests\\testPackages\\";
+//		String path2 = curDir+"\\src\\Tests\\testPackages\\";
+//		
+		String path1 = "E:\\Sankar\\empty";
+		String path2 = "E:\\Sankar\\empty";
+		
+		System.out.println(astComparisonHandler(path1,path2));
+	}
 }

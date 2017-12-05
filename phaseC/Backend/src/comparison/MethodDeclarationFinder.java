@@ -9,7 +9,7 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
 
 public class MethodDeclarationFinder extends ASTVisitor {
 	  private final List <MethodDeclaration> methods = new ArrayList <> ();
-	  /*
+	  /**
 	   * Returns a list of Prefix expression for the given AST node 
 	   */
 	  public List<MethodDeclaration> perform(ASTNode node) {
@@ -17,7 +17,7 @@ public class MethodDeclarationFinder extends ASTVisitor {
 	      node.accept(finder);
 	      return finder.getMethods();
 	  }
-	  /*
+	  /**
 	   * (non-Javadoc)
 	   * @see org.eclipse.jdt.core.dom.ASTVisitor#visit(org.eclipse.jdt.core.dom.MethodDeclaration)
 	   */

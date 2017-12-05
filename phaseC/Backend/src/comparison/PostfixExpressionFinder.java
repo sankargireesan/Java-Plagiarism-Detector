@@ -10,7 +10,7 @@ import org.eclipse.jdt.core.dom.*;
 public class PostfixExpressionFinder extends ASTVisitor{
 	private final List <PostfixExpression> expressions = new ArrayList <> ();
 	
-	/*
+	/**
 	 *	Returns a list of Prefix expression for the given AST node 
 	 */
 	public static List<PostfixExpression> perform(ASTNode node) {
@@ -18,7 +18,7 @@ public class PostfixExpressionFinder extends ASTVisitor{
 	    node.accept(finder);
 	    return finder.getexpressions();
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see org.eclipse.jdt.core.dom.ASTVisitor#visit(org.eclipse.jdt.core.dom.PostfixExpression)
 	 */
