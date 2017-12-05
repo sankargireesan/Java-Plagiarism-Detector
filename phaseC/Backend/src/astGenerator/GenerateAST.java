@@ -1,4 +1,4 @@
-package comparison;
+package astGenerator;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,6 +11,10 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
+
+import finder.MethodDeclarationFinder;
+import finder.VariableVisitor;
+import hashing.HashMethod;
 
 /**
  * GenerateAST implements IGenerateAST

@@ -1,7 +1,12 @@
-package comparison;
+package main;
 
 import java.util.HashMap;
 import java.util.List;
+
+import astGenerator.IGenerateAST;
+import comparison.IComparison;
+import hashing.IHashMethod;
+import renaming.IVariableRename;
 
 /*
  * Main handler class to handle different AST comparison functions
@@ -33,20 +38,10 @@ public class Handler {
 		return sb.toString();
 	}
 
-//	public static void main(String[] args) {
-//		String path1 = args[0];
-//		String path2 = args[1];
-//		System.out.println(astComparisonHandler(path1,path2));
-//	}
-	
 	public static void main(String[] args) {
-		String curDir= System.getProperty("user.dir");
-//		String path1 = curDir+"\\src\\Tests\\testPackages\\";
-//		String path2 = curDir+"\\src\\Tests\\testPackages\\";
-//		
-		String path1 = "E:\\Sankar\\empty";
-		String path2 = "E:\\Sankar\\empty";
-		
+		String path1 = args[0];
+		String path2 = args[1];
 		System.out.println(astComparisonHandler(path1,path2));
 	}
+	
 }

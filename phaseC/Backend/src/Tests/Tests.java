@@ -1,11 +1,10 @@
 package Tests;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-
-import comparison.*;
+import astGenerator.GenerateAST;
+import main.Handler;
 
 
 public class Tests {

@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
-import comparison.IGenerateAST;
-import comparison.IHashMethod;
-import comparison.Factory;
-import comparison.GenerateAST;
+import astGenerator.GenerateAST;
+import astGenerator.IGenerateAST;
+import hashing.IHashMethod;
+import main.Factory;
 
 public class HashMethodTests {
 	String curDir= System.getProperty("user.dir");

@@ -1,4 +1,4 @@
-package comparison;
+package hashing;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,6 +7,10 @@ import org.eclipse.jdt.core.dom.InfixExpression;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.PostfixExpression;
 import org.eclipse.jdt.core.dom.PrefixExpression;
+
+import finder.InfixExpressionFinder;
+import finder.PostfixExpressionFinder;
+import finder.PrefixExpressionFinder;
 
 /**
  * This class performs hash comparison
