@@ -26,7 +26,7 @@ Installation Steps
  
 3.	Restart your computer. You won’t be able to run Node.js® until you restart your computer.
 
-3) Install MongoDB
+3)Install MongoDB
 1.	Download MongoDB and install on the local development machine as described in the MongoDB documentation. These instructions assume MongoDB was installed in /usr/local/mongo on a Mac
 2.	At the root of the file system, create a directory called data and in there create a directory called db, e.g., /data/db. This directory is where MongoDB will store all files related to the databases managed by MongoDB
 3.	Add the MongoDB binaries to the system PATH environment variable so that the database can be executed from anywhere in the terminal command line. Assuming MongoDB was installed in /usr/local/mongo, add the bin directory to the system path by adding the following line to the ~/.bash_property file
@@ -38,7 +38,7 @@ MongoDB starting : pid=56659 port=27017 dbpath=/data/db
 waiting for connections on port 27017
 5.	Make sure MongoDB is running before you start Node.js.
 
-4) After installation, Open mongo.exe to open the mongodb command prompt.
+4)After installation, Open mongo.exe to open the mongodb command prompt.
 Create a database using command “use YOUR_DATABASE_NAME”.
 Once it is created, edit the server.js to connect to that database by editing this line:
 var connectionString = 'mongodb://localhost/YOUR_DATABASE_NAME';
@@ -46,7 +46,7 @@ var connectionString = 'mongodb://localhost/YOUR_DATABASE_NAME';
 
 5)Open the command prompt. Run “npm install” to install all the dependencies.
 
-6) Once you have node successfully installed, go to the directory where the server.js file is located using command prompt/terminal. Use the command “node server.js” to run the frontend. The application will need port 3000. Make sure this is available.
+6)Once you have node successfully installed, go to the directory where the server.js file is located using command prompt/terminal. Use the command “node server.js” to run the frontend. The application will need port 3000. Make sure this is available.
 7)Go to localhost:3000 to see the webpage.  
 8)Once you are in localhost:3000, navigate to “Project” link. You will be directed to a login page. Click on register to register as a new user. Once that is done, login to the application. Now give student names and links of the java projects on your local machine. For example if your java files reside in “C:\User\Projects\Sorters” 
 the you should exactly type “C:\User\Projects\Sorters” in input field. Similarly give link for second project. Click on “Perform Test” button to run the plagiarism test.
