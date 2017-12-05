@@ -1,7 +1,5 @@
 package comparison;
-/*
- * This class performs hash comparison
- */
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,45 +8,27 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.PostfixExpression;
 import org.eclipse.jdt.core.dom.PrefixExpression;
 
-
+/**
+ * This class performs hash comparison
+ */
 public class HashMethod implements IHashMethod{
 	
-	private static HashMap <String, List<Integer>> hashvalueList1 = new HashMap<> ();
-	private static HashMap <String, List<Integer>> hashvalueList2 = new HashMap<> ();
+	private int prime = 997;
+	private final float HashSimilarityThreshold = 80;
+	private final float ExpressionSimilarityThreshold = 90;
 	private static HashMap <String, List<Float>> comparisonList = new HashMap<> ();
 	
-	/*
+	/**
 	 * Hash Function
 	 */
 	private int CalHashValue(String x) {
 		int hashVal = x.hashCode( );
         hashVal %= 10;
-        if (hashVal < 0)
-            hashVal += 10;
-        return primeSize - hashVal % primeSize;	
+        hashVal += 10;
+        return prime - hashVal % prime;	
 	}
 	
-	/*
-	 *  Function to get prime number less than table size for CalHashValue function 
-	 */
-    private int getPrime()
-    {
-        for (int i = 1000 - 1; i >= 1; i--)
-        {
-            int fact = 0;
-            for (int j = 2; j <= (int) Math.sqrt(i); j++)
-                if (i % j == 0)
-                    fact++;
-            if (fact == 0)
-                return i;
-        }
-        /* Return a prime number */
-        return 3;
-    }
-    
-    private int primeSize = getPrime();
-	
-    /*
+    /**
 	 * Helper function to get operators for given method
 	 */
 	private int infixHelper( List <InfixExpression> infixList1 ) {
@@ -64,7 +44,7 @@ public class HashMethod implements IHashMethod{
 		return hashvalue;
 	}
 	
-	/*
+	/**
 	 * Helper function to get prefix operators for given method
 	 */
 	private int prefixHelper( List <PrefixExpression> prefixList1 ) {
@@ -80,7 +60,7 @@ public class HashMethod implements IHashMethod{
 		return hashvalue;
 	}
 	
-	/*
+	/**
 	 * Helper function to get prefix operators for given method
 	 */
 	private int postfixHelper( List <PostfixExpression> postfixList1 ) {
@@ -95,7 +75,7 @@ public class HashMethod implements IHashMethod{
 		
 		return hashvalue;
 	}
-	/*
+	/**
 	 * Returns the number of expressions in a method
 	 */
 	private int numberOfExpressions(MethodDeclaration method) {
@@ -111,7 +91,7 @@ public class HashMethod implements IHashMethod{
 		return size;
 	}
 	
-	/*
+	/**
 	 * Returns the hash value for expressions of the given method
 	 */
 	private int expressionHash(MethodDeclaration method) {
@@ -127,7 +107,7 @@ public class HashMethod implements IHashMethod{
 		return temp;
 	}
 	
-	/*
+	/**
 	 *  Returns a list of parameters of a method
 	 */
 	private List<String> getParameters (MethodDeclaration m) {
@@ -142,7 +122,7 @@ public class HashMethod implements IHashMethod{
 		return sb;
 	}
 	
-	/*
+	/**
 	 * Returns the hash value of parameters of a method
 	 */
 	private int parameterHash (MethodDeclaration m) {
@@ -154,14 +134,14 @@ public class HashMethod implements IHashMethod{
 		return p;
 	}
 	
-	/*
+	/**
 	 * Calculates the percentage of two integers
 	 */
 	private float percentage (int number1, int number2) {
 		return ((float)Math.min(number1, number2)/(float)Math.max(number1, number2))*100;
 	}
 	
-	/*
+	/**
 	 * Returns percentage of similarity
 	 */
 	private void percentageComparison (HashMap <String, List<Integer>> hashvalueList1, HashMap <String, List<Integer>> hashvalueList2) {
@@ -171,7 +151,7 @@ public class HashMethod implements IHashMethod{
 				List<Float> list = new ArrayList<Float>();
 				float percent = percentage(hashvalueList1.get(str1).get(0), hashvalueList2.get(str2).get(0));
 				float expressPercent = percentage( hashvalueList1.get(str1).get(1), hashvalueList2.get(str2).get(1));
-				if(percent >=80.0 && expressPercent >= 90.0) {
+				if(percent >=HashSimilarityThreshold && expressPercent >= ExpressionSimilarityThreshold) {
 					list.add(percent);
 					list.add((float)hashvalueList1.get(str1).get(1));
 					list.add((float)hashvalueList2.get(str2).get(1));
@@ -181,41 +161,39 @@ public class HashMethod implements IHashMethod{
 		}
 	}
 	
+	/**
+	 * Returns HashMap of method name and hash value of the method for provided list of methods
+	 */
+	private HashMap <String, List<Integer>> calculateHashValueMap(List<MethodDeclaration> methodList1) {
+		HashMap <String, List<Integer>> hashvalueList = new HashMap<> ();
+		for (MethodDeclaration m: methodList1) {
+			List<Integer> list = new ArrayList<Integer>();
+			int n = numberOfExpressions(m);
+			int rT = CalHashValue(m.getReturnType2().toString());
+			int eH = expressionHash(m);
+			int pH = parameterHash(m);
+			list.add(rT+eH+pH);
+			list.add(n);
+			hashvalueList.put( m.getName().toString()+"\n\n"+ m.toString(), list );
+		}
+		return hashvalueList;
+	}
 	
-	/*
+	/**
 	 * Performs the hashComparison on list of methods
 	 */
 	@Override
 	public void hashComparison(List<MethodDeclaration> methodList1, List<MethodDeclaration> methodList2) {			
 		
-		for (MethodDeclaration n1: methodList1) {
-			List<Integer> list = new ArrayList<Integer>();
-			int n = numberOfExpressions(n1);
-			int rT = CalHashValue(n1.getReturnType2().toString());
-			int eH = expressionHash(n1);
-			int pH = parameterHash(n1);
-			list.add(rT+eH+pH);
-			list.add(n);
-			hashvalueList1.put( n1.getName().toString()+"\n\n"+ n1.toString(),list);
-		}
+		// calculate has value for list of two methods
+		HashMap <String, List<Integer>> hashvalueList1 = calculateHashValueMap(methodList1);
+		HashMap <String, List<Integer>> hashvalueList2 = calculateHashValueMap(methodList2);
 		
-		
-		//calculating HashValue for second method list
-		for (MethodDeclaration n2: methodList2) {
-			List<Integer> list2 = new ArrayList<Integer>();
-			int n = numberOfExpressions(n2);
-			int rT = CalHashValue(n2.getReturnType2().toString());
-			int eH = expressionHash(n2);
-			int pH = parameterHash(n2);
-			list2.add(rT+eH+pH);
-			list2.add(n);
-			hashvalueList2.put( n2.getName().toString() +"\n\n"+ n2.toString(), list2 );
-		}
 		// calculating the percentage
 		percentageComparison(hashvalueList1,hashvalueList2);
 	}
 	
-	/*
+	/**
 	 * Returns the hash map with similarity percentage and number of expressions in each method
 	 */
 	@Override
