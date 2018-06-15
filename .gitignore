@@ -1,9 +1,0 @@
-*.class
-*.swo
-*.rtf
-.idea
-*.iml
-.classpath
-.project
-bin/
-.settings
