@@ -1,8 +1,0 @@
-UML:
-Your UML Class Diagram shows several things at once. First, it shows major system components such as SubTreePlagiarism and ASTSubTreeGenerator. Second, it shows key classes such as Report and User. Third, it shows generic infrastructure such as Sets, Iterators, etc. It would have been useful to have a separate diagram only showing the major components and their relationships so that it is easy to quickly get an overview. It is also a bit surprising to see an ASTSubTreeGenerator but no AST-related classes, and it is unclear if/how the components work with files and projects for the code being analyzed.
-
-Interfaces:
- Major data structures/objects wrt UML have not been provided.
-
-Score: 86
-
